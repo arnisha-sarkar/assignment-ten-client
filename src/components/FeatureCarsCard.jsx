@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router";
 
-const FeatureCarsCard = ({ cars }) => {
-  const { name, category, rentPrice, _id, Provider_Name } = cars;
+const FeatureCarsCard = ({ car }) => {
+  const { name, category, rentPrice, _id, Provider_Name } = car;
   return (
     <div>
       <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
@@ -59,7 +59,7 @@ const FeatureCarsCard = ({ cars }) => {
               Upadate
             </Link> */}
             <Link
-              to={`/featured/${cars._id}`}
+              to={`/featured/${car._id}`}
               className="btn rounded-full bg-linear-to-r from-pink-500 to-red-600 hover:from-red-600 hover:to-pink-500 text-white w-full btn-sm"
             >
               “View Details”

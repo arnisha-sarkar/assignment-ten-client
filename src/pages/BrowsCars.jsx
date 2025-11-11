@@ -4,6 +4,7 @@ import Brows from "../components/Brows";
 
 const BrowsCars = () => {
   const { products, loading } = useProducts();
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
       {products.map((product) => (

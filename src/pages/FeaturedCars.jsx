@@ -1,10 +1,10 @@
-import React from "react";
 import { Link, useLoaderData } from "react-router";
 
 const FeaturedCars = () => {
   const data = useLoaderData();
   const cars = data.result;
   console.log(cars);
+
   return (
     <div>
       <div className="max-w-4xl mx-auto my-10">

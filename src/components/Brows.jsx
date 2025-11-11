@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 
 const Brows = ({ product }) => {
-  const { name, category, rentPrice, _id } = product;
+  const { name, category, rentPrice, _id, status } = product;
   return (
     <div>
       <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
@@ -19,7 +19,13 @@ const Brows = ({ product }) => {
             {category}
           </div>
           <p className="line-clamp-1">{rentPrice}</p>
-          <p>Available</p>
+          <p>
+            {status === "unavailable" ? (
+              <span className="badge badge-error text-white">Unavailable</span>
+            ) : (
+              <span className="badge badge-success text-white">Available</span>
+            )}
+          </p>
           {/* <p className="text-sm text-base-content/70">by {author}</p> */}
           <div className="card-actions justify-between items-center mt-4">
             <div className="flex gap-4 text-sm text-base-content/60">

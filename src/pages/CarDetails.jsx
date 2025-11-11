@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
 const CarDetails = () => {
+  const navigate = useNavigate();
   const user = useContext(AuthContext);
   const data = useLoaderData();
   const car = data.result;
@@ -29,6 +30,7 @@ const CarDetails = () => {
       .then((data) => {
         console.log(data);
         toast.success("successfuly booking");
+        navigate("/booking");
       })
       .catch((err) => {
         console.log(err);
