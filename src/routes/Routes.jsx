@@ -10,6 +10,8 @@ import MyListings from "../pages/MyListings";
 import BrowsCars from "../pages/BrowsCars";
 import MyBookings from "../pages/MyBookings";
 import UpdateCar from "../pages/UpdateCar";
+import FeaturedCars from "../pages/FeaturedCars";
+import CarDetails from "../pages/CarDetails";
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +22,7 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+        loader: () => fetch("http://localhost:3000/newest-cars"),
       },
       {
         path: "/addCar",
@@ -60,6 +63,30 @@ export const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:3000/cars/${params.id}`),
       },
+      {
+        path: "/featured/:id",
+        element: <FeaturedCars />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/newest-cars/${params.id}`),
+      },
+      {
+        path: "/car-details/:id",
+        element: (
+          <PrivateRoute>
+            <CarDetails />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/cars/${params.id}`),
+      },
+      // {
+      //   path: "/booking",
+      //   element: (
+      //     <PrivateRoute>
+      //       <BookNow />
+      //     </PrivateRoute>
+      //   ),
+      // },
       {
         path: "/login",
         element: <Login />,

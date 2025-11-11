@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router";
 
-const Brows = ({ product }) => {
-  const { name, category, rentPrice, _id } = product;
+const FeatureCarsCard = ({ cars }) => {
+  const { name, category, rentPrice, _id, Provider_Name } = cars;
   return (
     <div>
       <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
@@ -18,8 +18,27 @@ const Brows = ({ product }) => {
           <div className="text-white text-secondary badge text-xs badge-xs badge-secondary rounded-full">
             {category}
           </div>
+          <p className="text-sm text-gray-500">Provider: {Provider_Name}</p>
+          {/* <div>
+            <label className="label font-medium">{category}</label>
+            <select
+              defaultValue={""}
+              name="category"
+              required
+              className="select w-full rounded-full focus:border-0 focus:outline-gray-200"
+            >
+              <option value="" disabled>
+                Select category
+              </option>
+              <option value="Vehicles">Sedan</option>
+              <option value="Plants">SUV</option>
+              <option value="Foods">Hatchback</option>
+              <option value="Home & Living">Luxury</option>
+              <option value="Characters">Electric</option>
+            </select>
+          </div> */}
           <p className="line-clamp-1">{rentPrice}</p>
-          <p>Available</p>
+          {/* <p>Available</p> */}
           {/* <p className="text-sm text-base-content/70">by {author}</p> */}
           <div className="card-actions justify-between items-center mt-4">
             <div className="flex gap-4 text-sm text-base-content/60">
@@ -32,8 +51,15 @@ const Brows = ({ product }) => {
               {likes}
             </span> */}
             </div>
+            {/* <Link
+              to={`/update/${car._id}`}
+              //   to={`/model-details/${_id}`}
+              className="btn rounded-full bg-linear-to-r from-pink-500 to-red-600 hover:from-red-600 hover:to-pink-500 text-white w-full btn-sm"
+            >
+              Upadate
+            </Link> */}
             <Link
-              to={`/car-details/${_id}`}
+              to={`/featured/${cars._id}`}
               className="btn rounded-full bg-linear-to-r from-pink-500 to-red-600 hover:from-red-600 hover:to-pink-500 text-white w-full btn-sm"
             >
               “View Details”
@@ -45,4 +71,4 @@ const Brows = ({ product }) => {
   );
 };
 
-export default Brows;
+export default FeatureCarsCard;

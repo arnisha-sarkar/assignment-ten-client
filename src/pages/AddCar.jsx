@@ -18,6 +18,7 @@ const AddCar = () => {
       thumbnail: e.target.thumbnail.value,
       Provider_Name: user.displayName,
       Provider_Email: user.email,
+      status: "available",
     };
     fetch("http://localhost:3000/cars", {
       method: "POST",
