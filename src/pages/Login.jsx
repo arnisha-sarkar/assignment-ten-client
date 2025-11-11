@@ -16,9 +16,13 @@ const Login = () => {
   const from = location.state || "/";
   console.log(location);
   const navigate = useNavigate();
-  if (user) {
-    return navigate("/");
-  }
+  // aey ta use korle login korar por home page neyea jai kintu
+  // ami jey page e login kori oii page dekai na ama kea abr oii page
+  // astea hoy [aey ta neya ektu reseach korbo private rout video er last dekbo]
+
+  // if (user) {
+  //   return navigate("/");
+  // }
   // console.log(user);
   const handleLogin = (e) => {
     e.preventDefault();

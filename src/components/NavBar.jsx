@@ -92,7 +92,13 @@ const NavBar = () => {
                 <MyLink to={"/addCar"}>Add Car</MyLink>
               </li>
               <li>
-                <a>Item 3</a>
+                <MyLink to={"/listings"}>My Listings</MyLink>
+              </li>
+              <li>
+                <MyLink to={"/brows"}>Browse Cars</MyLink>
+              </li>
+              <li>
+                <MyLink to={"/booking"}>My Bookings</MyLink>
               </li>
             </ul>
           </div>
