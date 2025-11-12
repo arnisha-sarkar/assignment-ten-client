@@ -30,7 +30,7 @@ const NavBar = () => {
   return (
     <div className="fixed top-0 left-0 w-full z-50 bg-transparent">
       <MyContainer>
-        <div className="navbar shadow-sm">
+        <div className="navbar shadow-sm px-[100px]">
           <div className="navbar-start">
             <div className="dropdown">
               <div
@@ -107,7 +107,7 @@ const NavBar = () => {
             {loading ? (
               <ClockLoader color="#fff" />
             ) : user ? (
-              <div className="dropdown  border border-red-400">
+              <div className="dropdown">
                 <div tabIndex={0} role="button" className=" m-1">
                   <img
                     src={user?.photoURL || "https://via.placeholder.com"}
@@ -117,15 +117,26 @@ const NavBar = () => {
                 </div>
                 <div
                   tabIndex="-1"
-                  className="dropdown-content menu bg-base-100 rounded-box z-1 w-25 p-2 shadow-sm"
+                  className="dropdown-content menu bg-base-100 rounded-box z-[100] w-56 max-h-60 p-3 shadow-lg border border-gray-300 overflow-y-auto"
                 >
                   <h2>{user?.displayName}</h2>
-                  <p className="">{user?.email}</p>
-                  <button onClick={handleSignout}>Sign Out</button>
+                  <p className="my-3">{user?.email}</p>
+                  <button
+                    onClick={handleSignout}
+                    className="outline px-3 py-2 text-[#2563EB] cursor-pointer"
+                  >
+                    Sign Out
+                  </button>
                 </div>
               </div>
             ) : (
-              <MyLink to={"/login"}>Login</MyLink>
+              <button className="outline px-12 py-4 text-[#2563EB]">
+                <MyLink to={"/login"} className="text-[#F9FAFB] ">
+                  Login
+                </MyLink>
+              </button>
+
+              // <MyLink to={"/login"}>Login</MyLink>
             )}
           </div>
         </div>
