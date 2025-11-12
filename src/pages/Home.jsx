@@ -3,6 +3,7 @@ import Banner from "../components/Banner";
 import FeaturedCars from "../components/FeaturedCars";
 import { useLoaderData } from "react-router";
 import WhyRent from "../components/WhyRent";
+import Testimonials from "../components/Testimonials";
 // import Search from "../components/Search";
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
       {/* <Search /> */}
       <FeaturedCars data={data} />
       <WhyRent />
+      <Testimonials />
     </div>
   );
 };
