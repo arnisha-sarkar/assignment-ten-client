@@ -1,19 +1,18 @@
 import React from "react";
 import { Link } from "react-router";
-
+import { motion } from "framer-motion";
 const FeatureCarsCard = ({ car }) => {
   const { name, category, rentPrice, _id, Provider_Name } = car;
   return (
     <div>
       <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-        {/* <figure className="h-48 overflow-hidden">
-          <img
-            src=""
-            alt={name}
-            className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-          />
-        </figure> */}
-        <div className="card-body">
+        <motion.div
+          className="card bg-base-100 shadow-lg rounded-xl overflow-hidden"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="card-body"
+        >
           <h2 className="card-title text-[#364d59] text-2xl">{name}</h2>
           <p className="line-clamp-1 text-[#0779e4] text-[18px] font-medium">
             {rentPrice}
@@ -52,7 +51,7 @@ const FeatureCarsCard = ({ car }) => {
               View Details
             </Link>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

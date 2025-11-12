@@ -7,8 +7,8 @@ const Footer = () => {
   return (
     <div className="bg-gray-900 ">
       <MyContainer>
-        <footer className=" text-gray-300 py-10 mt-10 border border-red-400">
-          <div className="container mx-auto px-6 grid md:grid-cols-3 gap-8">
+        <footer className=" text-gray-300 py-10 mt-10 ">
+          <div className="container mx-auto px-6 grid  md:grid-cols-3 grid-cols-1 gap-8">
             {/* Logo + Website Name */}
             <div className="flex flex-col gap-2 ">
               <div className="flex gap-5">
@@ -37,7 +37,7 @@ const Footer = () => {
             </div>
 
             {/* Terms & Social Links */}
-            <div className="text-right">
+            <div className="lg:text-right text-left">
               <h3 className="text-lg font-semibold text-white mb-3">
                 Useful Links
               </h3>

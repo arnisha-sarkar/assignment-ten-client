@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import FeatureCarsCard from "./FeatureCarsCard";
 import MyContainer from "./MyContainer";
-
+import { motion } from "framer-motion";
 const FeaturedCars = ({ data }) => {
   console.log(data);
   const [cars, setCars] = useState(data);
@@ -52,19 +52,33 @@ const FeaturedCars = ({ data }) => {
         </form>
         <div>
           <div className="flex flex-col justify-center items-center ">
-            <h2 className="text-[32px] text-[#364d59] font-bold">
+            <motion.h2
+              initial={{ opacity: 0, y: -50 }} // invisible & top
+              animate={{ opacity: 1, y: 0 }} // fade in & move down
+              transition={{ duration: 1, ease: "easeOut" }}
+              whileHover={{ scale: 1.05, y: -5 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="text-[32px] text-[#364d59] font-bold"
+            >
               Our Featured Cars
-            </h2>
-            <p className="w-[50%] text-center mt-4 text-[#888888]">
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 50 }} // invisible & bottom
+              animate={{ opacity: 1, y: 0 }} // fade in & move up
+              transition={{ duration: 1, delay: 0.5, ease: "easeOut" }} // delay for stagger
+              whileHover={{ scale: 1.05, y: -5 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="w-[50%] text-center mt-4 text-[#888888]"
+            >
               Discover our handpicked selection of top-quality cars, perfect for
               any occasion. From stylish sedans to powerful SUVs, these featured
               cars offer comfort, performance, and reliability for your next
               journey. Explore the best options available and find your ideal
               ride today!
-            </p>
+            </motion.p>
           </div>
           <MyContainer>
-            <div className="grid grid-cols-3 gap-3 mt-12">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 mt-12">
               {cars.map((car) => (
                 <FeatureCarsCard key={car._id} car={car} />
               ))}

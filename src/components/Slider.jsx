@@ -23,6 +23,8 @@ const Slider = () => {
               initial={{ opacity: 0, y: -50 }} // invisible & top
               animate={{ opacity: 1, y: 0 }} // fade in & move down
               transition={{ duration: 1, ease: "easeOut" }}
+              whileHover={{ scale: 1.05, y: -5 }}
+              transition={{ type: "spring", stiffness: 300 }}
               className="text-5xl font-bold mb-4 text-red"
             >
               Luxury Rides
@@ -33,6 +35,8 @@ const Slider = () => {
               transition={{ duration: 1, delay: 0.5, ease: "easeOut" }} // delay for stagger
               className="text-lg text-gray-700 max-w-xl"
               className="text-lg mb-5 w-[60%] "
+              whileHover={{ scale: 1.05, y: -5 }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
               Discover the joy of premium travel with our luxury car collection.
               From sleek designs to smooth performance, every detail is crafted
@@ -42,7 +46,7 @@ const Slider = () => {
             <motion.button
               whileHover={{ scale: 1.05 }} // hover করলে একটু বড় হবে
               whileTap={{ scale: 0.95 }} // click করলে একটু shrink হবে
-              className="btn btn-primary"
+              className="btn bg-[#007bff]"
             >
               Explore Now
             </motion.button>
