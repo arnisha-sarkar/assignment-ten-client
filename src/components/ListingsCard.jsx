@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
-
 const ListingsCard = ({ car }) => {
   const { name, category, rentPrice, _id } = car;
   console.log(car);
@@ -89,13 +88,13 @@ const ListingsCard = ({ car }) => {
             <Link
               to={`/update/${car._id}`}
               //   to={`/model-details/${_id}`}
-              className="btn rounded-full bg-linear-to-r from-pink-500 to-red-600 hover:from-red-600 hover:to-pink-500 text-white w-full btn-sm"
+              className="btn rounded-full bg-[#007bff] hover:from-red-600 hover:to-pink-500 text-white w-full btn-sm"
             >
               Upadate
             </Link>
             <Link
               onClick={handleDelete}
-              className="btn rounded-full bg-linear-to-r from-pink-500 to-red-600 hover:from-red-600 hover:to-pink-500 text-white w-full btn-sm"
+              className="btn rounded-full bg-[#007bff] hover:from-red-600 hover:to-pink-500 text-white w-full btn-sm"
             >
               Delete
             </Link>

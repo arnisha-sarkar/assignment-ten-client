@@ -7,7 +7,7 @@ const Testimonials = () => {
       <MyContainer>
         <h2 className="text-[#364d59] text-2xl font-bold">Testimonials</h2>
         <div className="mt-6">
-          <div className="card  text-neutral-content  grid grid-cols-3 gap-6">
+          <div className="card  text-neutral-content  grid lg:grid-cols-3 grid-cols-1 gap-6">
             <div className="card-body items-center text-center bg-white hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
               {/* <h2 className="card-title">Cookies!</h2> */}
               <p className="text-[#888888]">
