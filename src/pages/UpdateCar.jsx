@@ -152,7 +152,7 @@ const UpdateCar = () => {
     //     </div>
     //   </div>
     // </div>
-    <div className="card border border-gray-200 bg-base-100 w-full max-w-md mx-auto shadow-2xl rounded-2xl">
+    <div className="card border border-gray-200 bg-base-100 w-full max-w-md mx-auto shadow-2xl rounded-2xl mt-30 mb-30">
       <div className="card-body p-6 relative">
         <h2 className="text-2xl font-bold text-center mb-6">Update</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -233,7 +233,7 @@ const UpdateCar = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="btn w-full text-white mt-6 rounded-full bg-linear-to-r from-pink-500 to-red-600 hover:from-pink-600 hover:to-red-700"
+            className="btn w-full text-white mt-6 rounded-full bg-[#007bff] hover:from-pink-600 hover:to-red-700"
           >
             Update Car
           </button>

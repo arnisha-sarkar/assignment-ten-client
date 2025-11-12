@@ -19,7 +19,7 @@ const MyListings = () => {
             transition={{ type: "spring", stiffness: 300 }}
             className="text-[32px] text-[#364d59] font-bold"
           >
-            Our Featured Cars
+            My Listings
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 50 }} // invisible & bottom

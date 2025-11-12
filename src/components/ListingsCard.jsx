@@ -50,7 +50,7 @@ const ListingsCard = ({ car }) => {
         </figure> */}
         <div className="card-body">
           <h2 className="card-title">{name}</h2>
-          <div className="text-white text-secondary badge text-xs badge-xs badge-secondary rounded-full">
+          <div className="text-white bg-[#364d59] badge text-[18px] py-2 rounded-full my-2.5">
             {category}
           </div>
           {/* <div>
