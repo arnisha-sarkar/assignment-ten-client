@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 const ListingsCard = ({ car }) => {
   const { name, category, rentPrice, _id } = car;
+
   console.log(car);
   console.log(_id);
   const navigate = useNavigate();
@@ -25,6 +27,7 @@ const ListingsCard = ({ car }) => {
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
+
             navigate("/addCar");
             Swal.fire({
               title: "Deleted!",
@@ -38,6 +41,7 @@ const ListingsCard = ({ car }) => {
       }
     });
   };
+
   return (
     <div>
       <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">

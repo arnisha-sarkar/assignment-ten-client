@@ -2,9 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { motion } from "framer-motion";
 import addcar3 from "../assets/addcar3.avif";
+import { ClockLoader } from "react-spinners";
 const MyBookings = () => {
   const { user } = useContext(AuthContext);
   const [bookings, setBookings] = useState([]);
+  const [loading, setLoading] = useState(true);
   // console.log(bookings);
 
   useEffect(() => {
@@ -14,10 +16,22 @@ const MyBookings = () => {
         .then((data) => {
           console.log(data);
           setBookings(data);
+          setLoading(false);
         })
         .catch((err) => console.log(err));
+      setLoading(false);
     }
   }, [user]);
+  if (loading) {
+    return (
+      <div
+        className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center"
+        style={{ backgroundImage: `url(${addcar3})` }}
+      >
+        <ClockLoader color="#fff" size={100} />
+      </div>
+    );
+  }
   return (
     <div
       className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center"

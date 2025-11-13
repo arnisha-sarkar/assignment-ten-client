@@ -4,6 +4,7 @@ import FeaturedCars from "../components/FeaturedCars";
 import { useLoaderData } from "react-router";
 import WhyRent from "../components/WhyRent";
 import Testimonials from "../components/Testimonials";
+import TopRated from "../components/TopRated";
 // import Search from "../components/Search";
 
 const Home = () => {
@@ -15,6 +16,7 @@ const Home = () => {
       {/* <Search /> */}
       <FeaturedCars data={data} />
       <WhyRent />
+      <TopRated />
       <Testimonials />
     </div>
   );

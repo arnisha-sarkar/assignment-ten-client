@@ -1,11 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLoaderData, useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
+import { ClockLoader } from "react-spinners";
+import addcar3 from "../assets/addcar3.avif";
 const CarDetails = () => {
   const navigate = useNavigate();
   const user = useContext(AuthContext);
   const data = useLoaderData();
+
   const car = data.result;
   const {
     name,
@@ -30,8 +33,9 @@ const CarDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+
         toast.success("successfuly booking");
-        navigate("/booking");
+        // navigate("/booking");
       })
       .catch((err) => {
         console.log(err);

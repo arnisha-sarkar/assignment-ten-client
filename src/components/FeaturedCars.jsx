@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import FeatureCarsCard from "./FeatureCarsCard";
 import MyContainer from "./MyContainer";
 import { motion } from "framer-motion";
+import { ClockLoader } from "react-spinners";
 const FeaturedCars = ({ data }) => {
   console.log(data);
   const [cars, setCars] = useState(data);
@@ -21,6 +22,7 @@ const FeaturedCars = ({ data }) => {
         setCars(data);
       });
   };
+
   return (
     <>
       <div>
@@ -28,7 +30,7 @@ const FeaturedCars = ({ data }) => {
           onSubmit={handleSearch}
           className="flex justify-center gap-2 mt-10 mb-10 "
         >
-          <label className="input rounded-full w-[15%]">
+          <label className="input rounded-full ">
             <svg
               className="h-[1em] opacity-50"
               xmlns="http://www.w3.org/2000/svg"
