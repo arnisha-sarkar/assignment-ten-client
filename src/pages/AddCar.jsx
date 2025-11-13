@@ -21,7 +21,7 @@ const AddCar = () => {
       Provider_Email: user.email,
       status: "available",
     };
-    fetch("https://car-one-gamma.vercel.app/cars", {
+    fetch("https://car-site-fawn.vercel.app/cars", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -13,7 +13,7 @@ const BrowsCars = () => {
         backgroundImage: `url(${addcar3})`,
       }}
     >
-      <MyContainer clasName="mt-30">
+      <MyContainer clasName="mt-30 mb-20">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
           {products.map((product) => (
             <Brows key={product._id} product={product} />

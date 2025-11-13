@@ -20,7 +20,7 @@ const UpdateCar = () => {
       Provider_Name: user.displayName,
       Provider_Email: user.email,
     };
-    fetch(`https://car-one-gamma.vercel.app/cars/${car._id}`, {
+    fetch(`https://car-site-fawn.vercel.app/cars/${car._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

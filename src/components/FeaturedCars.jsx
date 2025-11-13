@@ -14,7 +14,7 @@ const FeaturedCars = ({ data }) => {
       return;
     }
     // console.log(search_text);
-    fetch(`https://car-one-gamma.vercel.app/search?search=${search_text}`)
+    fetch(`https://car-site-fawn.vercel.app/search?search=${search_text}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -28,7 +28,7 @@ const FeaturedCars = ({ data }) => {
           onSubmit={handleSearch}
           className="flex justify-center gap-2 mt-10 mb-10 "
         >
-          <label className="input rounded-full ">
+          <label className="input rounded-full w-[15%]">
             <svg
               className="h-[1em] opacity-50"
               xmlns="http://www.w3.org/2000/svg"

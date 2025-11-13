@@ -1,16 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
-import upadateImg from "../assets/update.avif";
 import { motion } from "framer-motion";
 import addcar3 from "../assets/addcar3.avif";
 const MyBookings = () => {
   const { user } = useContext(AuthContext);
   const [bookings, setBookings] = useState([]);
-  console.log(bookings);
+  // console.log(bookings);
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`https://car-one-gamma.vercel.app/my-booking?email=${user.email}`)
+      fetch(`https://car-site-fawn.vercel.app/my-booking?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data);

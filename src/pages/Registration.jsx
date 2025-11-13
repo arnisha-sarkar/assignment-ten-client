@@ -86,20 +86,23 @@ const Registration = () => {
             <div className="hero-content flex-col lg:flex-row-reverse">
               <div className="card bg-base-100 w-full max-w-sm md:max-w-md lg:max-w-lg shadow-2xl">
                 <form onSubmit={handleRegistration}>
-                  <div className="card-body">
-                    <fieldset className="fieldset">
+                  <div className="card-body w-[500px] h-[570px] bg-white">
+                    <h1 className="pt-10 text-center text-[#364d59] font-medium text-3xl">
+                      User Registration
+                    </h1>
+                    <fieldset className="fieldset w-[450px]  h-[600px]">
                       <label className="label">Name</label>
                       <input
                         type="text"
                         name="name"
-                        className="input input-bordered w-ful "
+                        className="input input-bordered w-[450px] "
                         placeholder="enter your name"
                       />
                       <label className="label">Email</label>
                       <input
                         type="email"
                         name="email"
-                        className="input input-bordered w-ful"
+                        className="input input-bordered w-[450px]"
                         placeholder="Email"
                       />
                       <label className="label">Photo</label>
@@ -132,7 +135,7 @@ const Registration = () => {
                       <button
                         onClick={handleGoogleLogin}
                         type="button"
-                        className="flex items-center justify-center gap-3 bg-white text-gray-800 px-5 py-2 rounded-lg w-full font-semibold hover:bg-gray-100 transition-colors cursor-pointer"
+                        className="flex items-center justify-center gap-3 bg-white text-gray-800 px-5 py-2 rounded-lg w-full font-semibold hover:bg-gray-100 transition-colors cursor-pointer text-[18px]"
                       >
                         <img
                           src="https://www.svgrepo.com/show/475656/google-color.svg"
@@ -141,16 +144,16 @@ const Registration = () => {
                         />
                         Continue with Google
                       </button>
-                      <button className="btn btn-neutral mt-4">
+                      <button className="btn bg-[#007bff] text-white text-[18px] mt-4">
                         Registration
                       </button>
                     </fieldset>
-                    <div className="text-center mt-3">
-                      <p className="text-sm text-black">
+                    <div className="text-center mt-3 ">
+                      <p className="text-sm text-black text-[18px]">
                         Already have an account?{" "}
                         <Link
                           to="/login"
-                          className="text-primary hover:text-#000[] font-medium underline"
+                          className="text-primary hover:text-#000[] font-medium underline text-[18px]"
                         >
                           Log in
                         </Link>

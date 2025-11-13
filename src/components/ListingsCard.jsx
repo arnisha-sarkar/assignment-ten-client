@@ -16,7 +16,7 @@ const ListingsCard = ({ car }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://car-one-gamma.vercel.app/cars/${car._id}`, {
+        fetch(`https://car-site-fawn.vercel.app/cars/${car._id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",

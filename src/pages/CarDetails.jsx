@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useLoaderData, useNavigate } from "react-router";
+import { Link, useLoaderData, useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
 const CarDetails = () => {
@@ -20,7 +20,7 @@ const CarDetails = () => {
   } = car;
 
   const handleBooking = () => {
-    fetch("https://car-one-gamma.vercel.app/booking", {
+    fetch("https://car-site-fawn.vercel.app/booking", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

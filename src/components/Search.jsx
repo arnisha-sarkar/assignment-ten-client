@@ -9,7 +9,7 @@
 //     e.preventDefault();
 //     const search_text = e.target.search.value;
 //     // console.log(search_text);
-//     fetch(`https://car-one-gamma.vercel.app/search?search=${search_text}`)
+//     fetch(`https://car-site-fawn.vercel.app/search?search=${search_text}`)
 //       .then((res) => res.json())
 //       .then((data) => {
 //         console.log(data);

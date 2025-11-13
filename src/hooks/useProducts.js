@@ -7,7 +7,7 @@ const useProducts = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios("https://car-one-gamma.vercel.app/cars")
+    axios("https://car-site-fawn.vercel.app/cars")
       .then((data) => setProducts(data.data))
       .catch((err) => setLoading(err))
       .finally(() => setLoading(false));
