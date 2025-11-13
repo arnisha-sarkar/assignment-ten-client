@@ -1,3 +1,15 @@
+
+Car Rental
+
+https://meek-bubblegum-dbec16.netlify.app/
+
+* User-Friendly Dashboard: Manage your bookings, view rental history, and track your upcoming trips with a personalized user account.
+* Secure Payment Options: Pay safely online with multiple secure payment methods and instant booking confirmation.
+* Easy Online Booking: Book your favorite car in just a few clicks with our simple and intuitive online reservation system.
+* Wide Selection of Vehicles: Choose from a variety of cars including sedans, SUVs, electric cars, and luxury vehicles to suit every need and occasion.
+* Real-Time Availability: Check car availability instantly and see the latest options, pricing, and locations.
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
