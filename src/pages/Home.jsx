@@ -23,13 +23,17 @@ const Home = () => {
         <AboutUs />
       </section>
       {/* <Search /> */}
-      <FeaturedCars data={data} />
+      <section id="featured-cars">
+        <FeaturedCars data={data} />
+      </section>
       <section id="rent">
         <WhyRent />
       </section>
       <TopRated />
       <OurMission />
-      <ReviewSlider />
+      <section id="review">
+        <ReviewSlider />
+      </section>
       <Map />
       {/* <Testimonials /> */}
     </div>

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import MyContainer from "./MyContainer";
-
+import { HashLink as Link } from "react-router-hash-link";
 const AboutUs = () => {
+  const [scrolled, setScrolled] = useState(false);
   return (
     <MyContainer>
       <div className="flex flex-wrap  my-16 py-4">
@@ -30,17 +31,29 @@ const AboutUs = () => {
           </motion.h2>
 
           {/* Button */}
-          <motion.button
-            initial={{ scale: 0.9, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            whileHover={{ scale: 1.08 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 300 }}
-            viewport={{ once: true }}
-            className="px-8 py-3 bg-[#003366] rounded-md cursor-pointer text-white"
+          <Link
+            smooth
+            to="/#review"
+            scroll={(el) => {
+              const yOffset = -100; // navbar height
+              const y =
+                el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+              window.scrollTo({ top: y, behavior: "smooth" });
+            }}
+            className={scrolled ? "text-white" : "text-white"}
           >
-            Read Our Story
-          </motion.button>
+            <motion.button
+              initial={{ scale: 0.9, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              viewport={{ once: true }}
+              className="px-8 py-3 bg-[#003366] rounded-md cursor-pointer text-white"
+            >
+              Read Our Story
+            </motion.button>
+          </Link>
         </div>
 
         {/* RIGHT SIDE */}

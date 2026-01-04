@@ -144,7 +144,7 @@
 
 // -----------------------------
 
-import React from "react";
+import React, { useState } from "react";
 import MyContainer from "./MyContainer";
 
 // images
@@ -156,14 +156,14 @@ import { motion } from "framer-motion";
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
-
+import { HashLink as Link } from "react-router-hash-link";
 // Swiper CSS
 import "swiper/css";
 import "swiper/css/effect-fade";
 
 const HeroSlider = () => {
   const images = [sliderOne, sliderTwo, sliderThree, sliderFour];
-
+  const [scrolled, setScrolled] = useState(false);
   return (
     <MyContainer>
       <div className="relative h-[600px] overflow-hidden rounded-xl mt-[130px]">
@@ -217,13 +217,32 @@ const HeroSlider = () => {
               Book premium cars at affordable prices. Easy booking, trusted
               service, and smooth rides.
             </motion.p>
-            <motion.button
+            <Link
+              smooth
+              to="/#featured-cars"
+              scroll={(el) => {
+                const yOffset = -100; // navbar height
+                const y =
+                  el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                window.scrollTo({ top: y, behavior: "smooth" });
+              }}
+              className={scrolled ? "text-white" : "text-white"}
+            >
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-3 bg-[#003366] hover:bg-[#003366] transition rounded-md cursor-pointer"
+              >
+                Browse Cars
+              </motion.button>
+            </Link>
+            {/* <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-3 bg-[#003366] hover:bg-[#003366] transition rounded-md cursor-pointer"
             >
               Browse Cars
-            </motion.button>
+            </motion.button> */}
           </div>
         </div>
       </div>
