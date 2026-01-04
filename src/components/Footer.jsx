@@ -50,15 +50,15 @@ const Footer = () => {
               <h3 className="text-lg font-semibold text-white mb-3">
                 Services
               </h3>
-              <p>Email: arnishasarkar122@gmail.com</p>
-              <p>Phone: +880 1765 62 1002</p>
-              <p>Address: Dhaka, Bangladesh</p>
+              <p>Car Rentals</p>
+              <p>Long-term Rentals</p>
+              <p>Corporate Rentals</p>
             </div>
             <div className=" ">
               <h3 className="text-lg font-semibold text-white mb-3">Support</h3>
-              <p>Email: arnishasarkar122@gmail.com</p>
-              <p>Phone: +880 1765 62 1002</p>
-              <p>Address: Dhaka, Bangladesh</p>
+              <p>Terms & Conditions</p>
+              <p>App issues</p>
+              <p>Refund Policy</p>
             </div>
             <div className=" ">
               <h3 className="text-lg font-semibold text-white mb-3">

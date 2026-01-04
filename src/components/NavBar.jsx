@@ -213,6 +213,18 @@ const NavBar = () => {
                   >
                     Dashboard
                   </Link>
+                  {/* <motion.button
+                    onClick={handleSignout}
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    whileHover={{ scale: 1.08 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    viewport={{ once: true }}
+                    className="px-8 py-3 bg-[#003366] rounded-md cursor-pointer text-white mt-2.5"
+                  >
+                    Dashboard
+                  </motion.button> */}
                   <motion.button
                     onClick={handleSignout}
                     initial={{ scale: 0.9, opacity: 0 }}
@@ -221,7 +233,7 @@ const NavBar = () => {
                     whileTap={{ scale: 0.95 }}
                     transition={{ type: "spring", stiffness: 300 }}
                     viewport={{ once: true }}
-                    className="px-8 py-3 bg-[#003366] rounded-md cursor-pointer text-white"
+                    className="px-8 py-3 bg-[#003366] rounded-md cursor-pointer text-white mt-5"
                   >
                     Sign Out
                   </motion.button>

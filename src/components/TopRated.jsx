@@ -201,7 +201,7 @@ const TopRated = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="grid grid-cols-1 lg:grid-cols-3 gap-6 my-20"
+        className="grid lg:grid-cols-3 grid-cols-1  gap-3 my-20"
       >
         {[topcar1, topcar2, topcar3].map((img, index) => (
           <motion.div

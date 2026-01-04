@@ -60,32 +60,32 @@ export const router = createBrowserRouter([
       //     </PrivateRoute>
       //   ),
       // },
-      {
-        path: "/update/:id",
-        element: (
-          <PrivateRoute>
-            <UpdateCar />
-          </PrivateRoute>
-        ),
-        loader: ({ params }) =>
-          fetch(`https://car-site-fawn.vercel.app/cars/${params.id}`),
-      },
+      // {
+      //   path: "/update/:id",
+      //   element: (
+      //     <PrivateRoute>
+      //       <UpdateCar />
+      //     </PrivateRoute>
+      //   ),
+      //   loader: ({ params }) =>
+      //     fetch(`https://car-site-fawn.vercel.app/cars/${params.id}`),
+      // },
       {
         path: "/featured/:id",
         element: <FeaturedCars />,
         loader: ({ params }) =>
           fetch(`https://car-site-fawn.vercel.app/newest-cars/${params.id}`),
       },
-      {
-        path: "/car-details/:id",
-        element: (
-          <PrivateRoute>
-            <CarDetails />
-          </PrivateRoute>
-        ),
-        loader: ({ params }) =>
-          fetch(`https://car-site-fawn.vercel.app/cars/${params.id}`),
-      },
+      // {
+      //   path: "/car-details/:id",
+      //   element: (
+      //     <PrivateRoute>
+      //       <CarDetails />
+      //     </PrivateRoute>
+      //   ),
+      //   loader: ({ params }) =>
+      //     fetch(`https://car-site-fawn.vercel.app/cars/${params.id}`),
+      // },
       // {
       //   path: "/booking",
       //   element: (
@@ -138,8 +138,28 @@ export const router = createBrowserRouter([
         loader: () => fetch("https://car-site-fawn.vercel.app/cars"),
       },
       {
+        path: "update/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateCar />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`https://car-site-fawn.vercel.app/cars/${params.id}`),
+      },
+      {
         path: "brows",
         element: <BrowsCars />,
+      },
+      {
+        path: "car-details/:id",
+        element: (
+          <PrivateRoute>
+            <CarDetails />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`https://car-site-fawn.vercel.app/cars/${params.id}`),
       },
       {
         path: "booking",

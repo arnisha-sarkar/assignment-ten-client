@@ -167,7 +167,7 @@ const ListingsCard = ({ car }) => {
         {/* Actions */}
         <div className="flex gap-3 pt-4">
           <Link
-            to={`/update/${_id}`}
+            to={`/dashboard/update/${_id}`}
             className="flex items-center justify-center gap-2 w-full py-2 rounded-lg bg-[#003366] text-white hover:bg-[#002244] transition"
           >
             <FiEdit />

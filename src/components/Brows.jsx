@@ -105,11 +105,11 @@ const Brows = ({ product }) => {
         </div>
 
         {/* Action Button */}
-        <Link to={`/car-details/${_id}`}>
+        <Link to={`/dashboard/car-details/${_id}`}>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="w-full py-3 mt-4 rounded-full bg-[#003366] text-white font-semibold shadow-md hover:bg-[#005bb5] transition"
+            className="w-full py-3 mt-4 rounded-full bg-[#003366] text-white font-semibold shadow-md hover:bg-[#003366] transition"
           >
             View Details
           </motion.button>

@@ -7,6 +7,7 @@ import TopRated from "../components/TopRated";
 import ReviewSlider from "../components/ReviewSlider";
 import AboutUs from "../components/AboutUs";
 import OurMission from "../components/OurMission";
+import Map from "../components/Map";
 
 // import Search from "../components/Search";
 
@@ -29,6 +30,7 @@ const Home = () => {
       <TopRated />
       <OurMission />
       <ReviewSlider />
+      <Map />
       {/* <Testimonials /> */}
     </div>
   );

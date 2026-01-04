@@ -11,7 +11,7 @@ import MyContainer from "./MyContainer";
 import { MdCarRental } from "react-icons/md";
 const ReviewSlider = () => {
   return (
-    <div className="bg-[#000] py-[100px] mt-[200px]">
+    <div className="bg-[#000] py-[150px] mt-[200px]">
       <MyContainer>
         {/* Section Header */}
         <MdCarRental className="text-white text-9xl mx-auto mb-20" />

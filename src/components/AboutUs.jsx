@@ -5,13 +5,13 @@ import MyContainer from "./MyContainer";
 const AboutUs = () => {
   return (
     <MyContainer>
-      <div className="flex gap-[20px] my-16 py-4">
+      <div className="flex flex-wrap  my-16 py-4">
         {/* LEFT SIDE */}
-        <div className="w-[50%] text-center flex flex-col justify-center items-center h-[300px]">
+        <div className="lg:w-[50%] w-full text-center flex flex-col justify-center items-center h-[300px] ">
           {/* Divider */}
           <motion.div
             initial={{ width: 0, opacity: 0 }}
-            whileInView={{ width: 350, opacity: 1 }}
+            whileInView={{ width: 250, opacity: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
             className="h-[1.5px] bg-[#003366]"
@@ -44,7 +44,7 @@ const AboutUs = () => {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="w-[50%] text-justify flex flex-col justify-center px-5 space-y-4">
+        <div className="lg:w-[50%] w-full text-justify flex flex-col justify-center px-5 space-y-4 ">
           {/* Paragraph 1 */}
           <motion.p
             initial={{ x: 50, opacity: 0 }}
