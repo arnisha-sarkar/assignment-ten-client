@@ -3,9 +3,21 @@ import ListingsCard from "../components/ListingsCard";
 import MyContainer from "../components/MyContainer";
 import { motion } from "framer-motion";
 import addcar3 from "../assets/addcar3.avif";
+import { ClockLoader } from "react-spinners";
+import useProducts from "../hooks/useProducts";
 const MyListings = () => {
   const data = useLoaderData();
-
+  const { products, loading } = useProducts();
+  if (loading) {
+    return (
+      <div
+        className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center"
+        style={{ backgroundImage: `url(${addcar3})` }}
+      >
+        <ClockLoader color="#fff" size={90} />
+      </div>
+    );
+  }
   return (
     <>
       <div

@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { FaEye } from "react-icons/fa";
 import { IoEyeOff } from "react-icons/io5";
 import { AuthContext } from "../context/AuthContext";
-import img6 from "../assets/img6.jpg";
+import img6 from "../assets/addcar2.avif";
 import {
   GoogleAuthProvider,
   signInWithPopup,
@@ -25,9 +25,6 @@ const Registration = () => {
     const password = e.target.password?.value;
     console.log({ displayName, photoURL, email, password });
 
-    // if (passwrod.length < 6) {
-    //   return toast.success("password should be at least 6 digit");
-    // }
     const regExp = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
     if (!regExp.test(password)) {
       toast.error(
@@ -75,14 +72,14 @@ const Registration = () => {
   };
   return (
     <div
-      className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center"
-      style={{
-        backgroundImage: `url(${img6})`,
-      }}
+    // className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center"
+    // style={{
+    //   backgroundImage: `url(${img6})`,
+    // }}
     >
       <div>
         <MyContainer>
-          <div className="hero  min-h-screen">
+          <div className="hero  min-h-screen mt-20">
             <div className="hero-content flex-col lg:flex-row-reverse">
               <div className="card bg-base-100 w-full max-w-sm md:max-w-md lg:max-w-lg shadow-2xl">
                 <form onSubmit={handleRegistration}>

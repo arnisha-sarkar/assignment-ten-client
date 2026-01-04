@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../context/AuthContext";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../firebase/firebase.config";
-import img6 from "../assets/img6.jpg";
+import img6 from "../assets/addcar.avif";
 const googleProvider = new GoogleAuthProvider();
 const Login = () => {
   // const [user, setUser] = useState(null);
@@ -17,14 +17,6 @@ const Login = () => {
   const from = location.state || "/";
   console.log(location);
   const navigate = useNavigate();
-  // aey ta use korle login korar por home page neyea jai kintu
-  // ami jey page e login kori oii page dekai na ama kea abr oii page
-  // astea hoy [aey ta neya ektu reseach korbo private rout video er last dekbo]
-
-  // if (user) {
-  //   return navigate("/");
-  // }
-  // console.log(user);
   const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email?.value;
@@ -60,13 +52,13 @@ const Login = () => {
 
   return (
     <div
-      className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center"
-      style={{
-        backgroundImage: `url(${img6})`,
-      }}
+    // className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center"
+    // style={{
+    //   backgroundImage: `url(${img6})`,
+    // }}
     >
       <div>
-        <div className="hero  min-h-screen">
+        <div className="hero  min-h-screen mt-11">
           <div className="hero-content flex-col lg:flex-row-reverse">
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
               <form onSubmit={handleLogin}>

@@ -1,108 +1,186 @@
-import { useState } from "react";
+// import { useState } from "react";
+// import { Link, useNavigate } from "react-router";
+// import Swal from "sweetalert2";
+// const ListingsCard = ({ car }) => {
+//   const { name, category, rentPrice, _id } = car;
+
+//   console.log(car);
+//   console.log(_id);
+//   const navigate = useNavigate();
+//   const handleDelete = () => {
+//     Swal.fire({
+//       title: "Are you sure?",
+//       text: "You won't be able to revert this!",
+//       icon: "warning",
+//       showCancelButton: true,
+//       confirmButtonColor: "#3085d6",
+//       cancelButtonColor: "#d33",
+//       confirmButtonText: "Yes, delete it!",
+//     }).then((result) => {
+//       if (result.isConfirmed) {
+//         fetch(`https://car-site-fawn.vercel.app/cars/${car._id}`, {
+//           method: "DELETE",
+//           headers: {
+//             "Content-Type": "application/json",
+//           },
+//         })
+//           .then((res) => res.json())
+//           .then((data) => {
+//             console.log(data);
+
+//             navigate("/addCar");
+//             Swal.fire({
+//               title: "Deleted!",
+//               text: "Your file has been deleted.",
+//               icon: "success",
+//             });
+//           })
+//           .catch((err) => {
+//             console.log(err);
+//           });
+//       }
+//     });
+//   };
+
+//   return (
+//     <div>
+//       <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+//         {/* <figure className="h-48 overflow-hidden">
+//           <img
+//             src=""
+//             alt={name}
+//             className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+//           />
+//         </figure> */}
+//         <div className="card-body">
+//           <h2 className="card-title">{name}</h2>
+//           <div className="text-white bg-[#364d59] badge text-[18px] py-2 rounded-full my-2.5">
+//             {category}
+//           </div>
+//           {/* <div>
+//             <label className="label font-medium">{category}</label>
+//             <select
+//               defaultValue={""}
+//               name="category"
+//               required
+//               className="select w-full rounded-full focus:border-0 focus:outline-gray-200"
+//             >
+//               <option value="" disabled>
+//                 Select category
+//               </option>
+//               <option value="Vehicles">Sedan</option>
+//               <option value="Plants">SUV</option>
+//               <option value="Foods">Hatchback</option>
+//               <option value="Home & Living">Luxury</option>
+//               <option value="Characters">Electric</option>
+//             </select>
+//           </div> */}
+//           <p className="line-clamp-1">{rentPrice}</p>
+//           <p>Available</p>
+//           {/* <p className="text-sm text-base-content/70">by {author}</p> */}
+//           <div className="card-actions justify-between items-center mt-4">
+//             <div className="flex gap-4 text-sm text-base-content/60">
+//               {/* <span className="flex items-center gap-1">
+//               <Eye className="w-4 h-4" />
+//               {views}
+//             </span> */}
+//               {/* <span className="flex items-center gap-1">
+//               <Heart className="w-4 h-4" />
+//               {likes}
+//             </span> */}
+//             </div>
+//             <Link
+//               to={`/update/${car._id}`}
+//               //   to={`/model-details/${_id}`}
+//               className="btn rounded-full bg-[#007bff] hover:from-red-600 hover:to-pink-500 text-white w-full btn-sm"
+//             >
+//               Upadate
+//             </Link>
+//             <Link
+//               onClick={handleDelete}
+//               className="btn rounded-full bg-[#007bff] hover:from-red-600 hover:to-pink-500 text-white w-full btn-sm"
+//             >
+//               Delete
+//             </Link>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default ListingsCard;
+
+// ------------------------------
+
 import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
+import { FiEdit, FiTrash2 } from "react-icons/fi";
+
 const ListingsCard = ({ car }) => {
   const { name, category, rentPrice, _id } = car;
-
-  console.log(car);
-  console.log(_id);
   const navigate = useNavigate();
+
   const handleDelete = () => {
     Swal.fire({
       title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      text: "This car will be permanently removed!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonColor: "#e11d48",
+      cancelButtonColor: "#6b7280",
+      confirmButtonText: "Yes, delete",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://car-site-fawn.vercel.app/cars/${car._id}`, {
+        fetch(`https://car-site-fawn.vercel.app/cars/${_id}`, {
           method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
         })
           .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-
-            navigate("/addCar");
-            Swal.fire({
-              title: "Deleted!",
-              text: "Your file has been deleted.",
-              icon: "success",
-            });
-          })
-          .catch((err) => {
-            console.log(err);
+          .then(() => {
+            Swal.fire("Deleted!", "Car has been removed.", "success");
+            navigate("/dashboard/addCar");
           });
       }
     });
   };
 
   return (
-    <div>
-      <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-        {/* <figure className="h-48 overflow-hidden">
-          <img
-            src=""
-            alt={name}
-            className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-          />
-        </figure> */}
-        <div className="card-body">
-          <h2 className="card-title">{name}</h2>
-          <div className="text-white bg-[#364d59] badge text-[18px] py-2 rounded-full my-2.5">
-            {category}
-          </div>
-          {/* <div>
-            <label className="label font-medium">{category}</label>
-            <select
-              defaultValue={""}
-              name="category"
-              required
-              className="select w-full rounded-full focus:border-0 focus:outline-gray-200"
-            >
-              <option value="" disabled>
-                Select category
-              </option>
-              <option value="Vehicles">Sedan</option>
-              <option value="Plants">SUV</option>
-              <option value="Foods">Hatchback</option>
-              <option value="Home & Living">Luxury</option>
-              <option value="Characters">Electric</option>
-            </select>
-          </div> */}
-          <p className="line-clamp-1">{rentPrice}</p>
-          <p>Available</p>
-          {/* <p className="text-sm text-base-content/70">by {author}</p> */}
-          <div className="card-actions justify-between items-center mt-4">
-            <div className="flex gap-4 text-sm text-base-content/60">
-              {/* <span className="flex items-center gap-1">
-              <Eye className="w-4 h-4" />
-              {views}
-            </span> */}
-              {/* <span className="flex items-center gap-1">
-              <Heart className="w-4 h-4" />
-              {likes}
-            </span> */}
-            </div>
-            <Link
-              to={`/update/${car._id}`}
-              //   to={`/model-details/${_id}`}
-              className="btn rounded-full bg-[#007bff] hover:from-red-600 hover:to-pink-500 text-white w-full btn-sm"
-            >
-              Upadate
-            </Link>
-            <Link
-              onClick={handleDelete}
-              className="btn rounded-full bg-[#007bff] hover:from-red-600 hover:to-pink-500 text-white w-full btn-sm"
-            >
-              Delete
-            </Link>
-          </div>
+    <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100">
+      <div className="p-6 space-y-4">
+        {/* Title */}
+        <h2 className="text-xl font-semibold text-gray-800">{name}</h2>
+
+        {/* Category */}
+        <span className="inline-block px-4 py-1 text-sm font-medium bg-[#003366]/10 text-[#003366] rounded-full">
+          {category}
+        </span>
+
+        {/* Price */}
+        <p className="text-2xl font-bold text-[#003366]">
+          ${rentPrice}
+          <span className="text-sm text-gray-500 font-medium"> / day</span>
+        </p>
+
+        {/* Status */}
+        <p className="text-sm text-green-600 font-medium">Available</p>
+
+        {/* Actions */}
+        <div className="flex gap-3 pt-4">
+          <Link
+            to={`/update/${_id}`}
+            className="flex items-center justify-center gap-2 w-full py-2 rounded-lg bg-[#003366] text-white hover:bg-[#002244] transition"
+          >
+            <FiEdit />
+            Update
+          </Link>
+
+          <button
+            onClick={handleDelete}
+            className="flex items-center justify-center gap-2 w-full py-2 rounded-lg bg-red-500 text-white hover:bg-red-600 transition"
+          >
+            <FiTrash2 />
+            Delete
+          </button>
         </div>
       </div>
     </div>

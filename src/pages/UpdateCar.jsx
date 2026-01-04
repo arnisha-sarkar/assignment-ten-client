@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useLoaderData } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
-import upadateImg from "../assets/update.avif";
+import upadateImg from "../assets/addcar.avif";
 import { motion } from "framer-motion";
 const UpdateCar = () => {
   const { user } = useContext(AuthContext);
@@ -47,8 +47,8 @@ const UpdateCar = () => {
       <div className="card border border-gray-200 bg-base-100 w-full max-w-md mx-auto shadow-2xl rounded-2xl mt-30 mb-30">
         <div className="card-body p-6 relative">
           <motion.h2
-            initial={{ opacity: 0, y: -50 }} // invisible & top
-            animate={{ opacity: 1, y: 0 }} // fade in & move down
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
             whileHover={{ scale: 1.05, y: -5 }}
             transition={{ type: "spring", stiffness: 300 }}

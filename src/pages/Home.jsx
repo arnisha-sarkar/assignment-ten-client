@@ -3,8 +3,11 @@ import Banner from "../components/Banner";
 import FeaturedCars from "../components/FeaturedCars";
 import { useLoaderData } from "react-router";
 import WhyRent from "../components/WhyRent";
-import Testimonials from "../components/Testimonials";
 import TopRated from "../components/TopRated";
+import ReviewSlider from "../components/ReviewSlider";
+import AboutUs from "../components/AboutUs";
+import OurMission from "../components/OurMission";
+
 // import Search from "../components/Search";
 
 const Home = () => {
@@ -12,12 +15,21 @@ const Home = () => {
   // console.log(data);
   return (
     <div>
-      <Banner />
+      <section id="home">
+        <Banner />
+      </section>
+      <section id="about">
+        <AboutUs />
+      </section>
       {/* <Search /> */}
       <FeaturedCars data={data} />
-      <WhyRent />
+      <section id="rent">
+        <WhyRent />
+      </section>
       <TopRated />
-      <Testimonials />
+      <OurMission />
+      <ReviewSlider />
+      {/* <Testimonials /> */}
     </div>
   );
 };

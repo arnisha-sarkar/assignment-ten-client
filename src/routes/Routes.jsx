@@ -4,7 +4,6 @@ import Home from "../pages/Home";
 import ErrorPage from "../pages/ErrorPage";
 import Registration from "../pages/Registration";
 import Login from "../pages/Login";
-import AddCar from "../pages/AddCar";
 import PrivateRoute from "../privateRoute/PrivateRoute";
 import MyListings from "../pages/MyListings";
 import BrowsCars from "../pages/BrowsCars";
@@ -12,7 +11,11 @@ import MyBookings from "../pages/MyBookings";
 import UpdateCar from "../pages/UpdateCar";
 import FeaturedCars from "../pages/FeaturedCars";
 import CarDetails from "../pages/CarDetails";
-
+import Privacy from "../pages/privacy";
+import Terms from "../pages/terms";
+import Contact from "../pages/Contact";
+import DashboardLayout from "../layouts/DashboardLayout";
+import AddCar from "../pages/AddCar";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -25,34 +28,38 @@ export const router = createBrowserRouter([
         loader: () => fetch("https://car-site-fawn.vercel.app/newest-cars"),
       },
       {
-        path: "/addCar",
-        element: (
-          <PrivateRoute>
-            <AddCar />
-          </PrivateRoute>
-        ),
+        path: "/contact",
+        element: <Contact />,
       },
-      {
-        path: "/listings",
-        element: (
-          <PrivateRoute>
-            <MyListings />
-          </PrivateRoute>
-        ),
-        loader: () => fetch("https://car-site-fawn.vercel.app/cars"),
-      },
-      {
-        path: "/brows",
-        element: <BrowsCars />,
-      },
-      {
-        path: "/booking",
-        element: (
-          <PrivateRoute>
-            <MyBookings />
-          </PrivateRoute>
-        ),
-      },
+      // {
+      //   path: "/addCar",
+      //   element: (
+      //     <PrivateRoute>
+      //       <AddCar />
+      //     </PrivateRoute>
+      //   ),
+      // },
+      // {
+      //   path: "/listings",
+      //   element: (
+      //     <PrivateRoute>
+      //       <MyListings />
+      //     </PrivateRoute>
+      //   ),
+      //   loader: () => fetch("https://car-site-fawn.vercel.app/cars"),
+      // },
+      // {
+      //   path: "/brows",
+      //   element: <BrowsCars />,
+      // },
+      // {
+      //   path: "/booking",
+      //   element: (
+      //     <PrivateRoute>
+      //       <MyBookings />
+      //     </PrivateRoute>
+      //   ),
+      // },
       {
         path: "/update/:id",
         element: (
@@ -94,6 +101,53 @@ export const router = createBrowserRouter([
       {
         path: "/registration",
         element: <Registration />,
+      },
+      {
+        path: "/terms",
+        element: <Terms />,
+      },
+      {
+        path: "/privacy",
+        element: <Privacy />,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "addCar",
+        element: (
+          <PrivateRoute>
+            <AddCar />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "listings",
+        element: (
+          <PrivateRoute>
+            <MyListings />
+          </PrivateRoute>
+        ),
+        loader: () => fetch("https://car-site-fawn.vercel.app/cars"),
+      },
+      {
+        path: "brows",
+        element: <BrowsCars />,
+      },
+      {
+        path: "booking",
+        element: (
+          <PrivateRoute>
+            <MyBookings />
+          </PrivateRoute>
+        ),
       },
     ],
   },

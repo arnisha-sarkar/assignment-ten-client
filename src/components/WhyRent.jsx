@@ -1,6 +1,6 @@
 import React from "react";
 import MyContainer from "./MyContainer";
-import img5 from "../assets/img5.avif";
+import img5 from "../assets/team.avif";
 import { motion } from "framer-motion";
 const WhyRent = () => {
   return (
@@ -40,57 +40,40 @@ const WhyRent = () => {
           </figure>
           <div className="card-body">
             <div className="flex flex-col gap-7">
-              <div className="w-[90%] bg-[#f6f5f5] px-4 py-4  hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                <h2 className="text-[#364d59] text-[20px] font-semibold">
-                  Trusted Car Rentals for Every Journey
-                </h2>
-                <p className="text-[#888888] font-medium">
-                  Rent cars with confidence! We provide a wide selection of
-                  high-quality vehicles, transparent pricing, and excellent
-                  customer support to ensure your trips are smooth and
-                  worry-free.
-                </p>
-              </div>
-              <div className="w-[90%] bg-[#f6f5f5] px-4 py-4  hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                <h2 className="text-[#364d59] text-[20px] font-semibold">
-                  Reliable Cars, Hassle-Free Rentals
-                </h2>
-                <p className="text-[#888888] font-medium">
-                  Experience the convenience of renting top-notch vehicles with
-                  ease. Our platform ensures safety, flexibility, and excellent
-                  service so you can focus on enjoying the ride.
-                </p>
-              </div>
-              <div className="w-[90%] bg-[#f6f5f5] px-4 py-4  hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                <h2 className="text-[#364d59] text-[20px] font-semibold">
-                  Your Journey, Our Commitment
-                </h2>
-                <p className="text-[#888888] font-medium">
-                  We make car rentals simple and reliable. From quality vehicles
-                  to 24/7 support, we’re dedicated to making every trip a
-                  memorable and stress-free experience.
-                </p>
-              </div>
-              <div className="w-[90%] bg-[#f6f5f5] px-4 py-4  hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                <motion.h2
-                  initial={{ opacity: 0, y: -50 }} // invisible & top
-                  animate={{ opacity: 1, y: 0 }} // fade in & move down
-                  transition={{ duration: 1, ease: "easeOut" }}
-                  className="text-5xl font-bold mb-4 text-red"
-                  className="text-[#364d59] text-[20px] font-semibold"
+              {[
+                {
+                  title: "Trusted Car Rentals for Every Journey",
+                  desc: "Rent cars with confidence! We provide a wide selection of high-quality vehicles, transparent pricing, and excellent customer support to ensure your trips are smooth and worry-free.",
+                },
+                {
+                  title: "Reliable Cars, Hassle-Free Rentals",
+                  desc: "Experience the convenience of renting top-notch vehicles with ease. Our platform ensures safety, flexibility, and excellent service so you can focus on enjoying the ride.",
+                },
+                {
+                  title: "Your Journey, Our Commitment",
+                  desc: "We make car rentals simple and reliable. From quality vehicles to 24/7 support, we’re dedicated to making every trip a memorable and stress-free experience.",
+                },
+                {
+                  title: "Why Customers Choose Us",
+                  desc: "Our customers trust us for affordable prices, well-maintained cars, and seamless booking. Rent with us for convenience, reliability, and an exceptional driving experience.",
+                },
+              ].map((card, index) => (
+                <motion.div
+                  key={index}
+                  className="w-[90%] bg-[#f6f5f5] px-4 py-4 rounded-md shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                  whileHover={{ scale: 1.03 }}
                 >
-                  Why Customers Choose Us
-                </motion.h2>
-                <p className="text-[#888888] font-medium">
-                  Our customers trust us for affordable prices, well-maintained
-                  cars, and seamless booking. Rent with us for convenience,
-                  reliability, and an exceptional driving experience.
-                </p>
-              </div>
+                  <h2 className="text-[#364d59] text-[20px] font-semibold mb-2">
+                    {card.title}
+                  </h2>
+                  <p className="text-[#888888] font-medium">{card.desc}</p>
+                </motion.div>
+              ))}
             </div>
-            {/* <div className="card-actions justify-end">
-              <button className="btn btn-primary">Listen</button>
-            </div> */}
           </div>
         </div>
       </MyContainer>

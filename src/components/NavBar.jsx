@@ -1,149 +1,245 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import MyContainer from "./MyContainer";
 import MyLink from "./MyLink";
 import { AuthContext } from "../context/AuthContext";
 import { MdCarRental } from "react-icons/md";
-// import { auth } from "../firebase/firebase.config";
-// import { signOut } from "firebase/auth";
 import { toast } from "react-toastify";
 import { ClockLoader } from "react-spinners";
-import { Link } from "react-router";
 import { motion } from "framer-motion";
+import { HashLink as Link } from "react-router-hash-link";
+import MenuItem from "./Menu/MenuItem";
+
 const NavBar = () => {
   const { user, setUser, handleSignoutFun, loading, setLoading } =
     useContext(AuthContext);
-  console.log(loading);
-  console.log(user);
+
+  const [scrolled, setScrolled] = useState(false);
+
+  // 🔹 Scroll detect
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const handleSignout = () => {
-    // signOut(auth)
     handleSignoutFun();
     setLoading(false)
       .then(() => {
-        toast.success("signout sucessful");
+        toast.success("Signout successful");
         setUser(null);
       })
-      .catch((e) => {
-        toast.error(e.message);
-      });
+      .catch((e) => toast.error(e.message));
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 bg-transparent">
+    <div
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300
+        ${scrolled ? "bg-[#001737] shadow-md py-4" : "bg-[#001737] py-6"}
+      `}
+    >
       <MyContainer>
-        <div className="navbar shadow-sm px-[100px]">
+        <div className="navbar px-[100px]">
+          {/* LEFT */}
           <div className="navbar-start">
-            <div className="dropdown text-white">
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn btn-ghost lg:hidden"
-              >
+            <div
+              className={`dropdown ${scrolled ? "text-white" : "text-black"}`}
+            >
+              <div tabIndex={0} className="btn btn-ghost lg:hidden">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
+                  className={`h-5 w-5 ${
+                    scrolled ? "text-white" : "text-black"
+                  }`}
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
-                  {" "}
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="2"
                     d="M4 6h16M4 12h8m-8 6h16"
-                  />{" "}
+                  />
                 </svg>
               </div>
-              <ul
-                tabIndex="-1"
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-              >
+
+              <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow">
                 <li>
-                  <MyLink to={"/"} className="">
-                    Home
-                  </MyLink>
+                  <MyLink to="/">Home</MyLink>
+                </li>
+                {/* <li>
+                  <MyLink to="/addCar">Add Car</MyLink>
                 </li>
                 <li>
-                  <MyLink to={"/addCar"}>Add Car</MyLink>
+                  <MyLink to="/listings">My Listings</MyLink>
                 </li>
                 <li>
-                  <MyLink to={"/listings"}>My Listings</MyLink>
+                  <MyLink to="/brows">Browse Cars</MyLink>
                 </li>
                 <li>
-                  <MyLink to={"/brows"}>Browse Cars</MyLink>
-                </li>
-                <li>
-                  <MyLink to={"/booking"}>My Bookings</MyLink>
-                </li>
+                  <MyLink to="/booking">My Bookings</MyLink>
+                </li> */}
+                {user && (
+                  <>
+                    <MenuItem
+                      // icon={MdCarRental}
+                      label="Add Car"
+                      address="/dashboard/addCar"
+                    />
+                    <MenuItem
+                      // icon={MdCarRental}
+                      label="My Listings"
+                      address="/dashboard/listings"
+                    />
+                    <MenuItem
+                      // icon={MdCarRental}
+                      label="Browse Cars"
+                      address="/dashboard/brows"
+                    />
+                    <MenuItem
+                      icon={MdCarRental}
+                      label="My Bookings"
+                      address="/dashboard/booking"
+                    />
+                  </>
+                )}
               </ul>
             </div>
+
             <div className="flex items-center gap-2">
-              <MdCarRental className="text-[#F9FAFB] text-3xl" />
+              <Link to="/">
+                <MdCarRental
+                  className={`text-3xl ${
+                    scrolled ? "text-white" : "text-white"
+                  }`}
+                />
+              </Link>
               <motion.h1
-                whileHover={{ scale: 1.1 }} // শুধু zoom হবে
+                whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className="text-white text-2xl font-semibold cursor-pointer"
+                className={`text-2xl font-semibold cursor-pointer ${
+                  scrolled ? "text-white" : "text-white"
+                }`}
               >
-                Car Rental
+                <Link to="/">Car Rental</Link>
               </motion.h1>
             </div>
           </div>
+
+          {/* CENTER */}
           <div className="navbar-center hidden lg:flex">
-            <ul className="flex gap-12 items-center">
+            <ul className={`flex gap-12 items-center`}>
               <li>
-                <MyLink to={"/"} className="">
+                <Link
+                  smooth
+                  to="/#home"
+                  scroll={(el) => {
+                    const yOffset = -100; // navbar height
+                    const y =
+                      el.getBoundingClientRect().top +
+                      window.pageYOffset +
+                      yOffset;
+                    window.scrollTo({ top: y, behavior: "smooth" });
+                  }}
+                  className={scrolled ? "text-white" : "text-white"}
+                >
                   Home
-                </MyLink>
+                </Link>
               </li>
+
               <li>
-                <MyLink to={"/addCar"}>Add Car</MyLink>
+                <Link
+                  smooth
+                  to="/#about"
+                  scroll={(el) => {
+                    const yOffset = -100; // navbar height
+                    const y =
+                      el.getBoundingClientRect().top +
+                      window.pageYOffset +
+                      yOffset;
+                    window.scrollTo({ top: y, behavior: "smooth" });
+                  }}
+                  className={scrolled ? "text-white" : "text-white"}
+                >
+                  About Us
+                </Link>
               </li>
+
               <li>
-                <MyLink to={"/listings"}>My Listings</MyLink>
+                <Link
+                  smooth
+                  to="/#rent"
+                  scroll={(el) => {
+                    const yOffset = -100; // navbar height
+                    const y =
+                      el.getBoundingClientRect().top +
+                      window.pageYOffset +
+                      yOffset;
+                    window.scrollTo({ top: y, behavior: "smooth" });
+                  }}
+                  className={scrolled ? "text-white" : "text-white"}
+                >
+                  Why Rent With Us
+                </Link>
               </li>
-              <li>
-                <MyLink to={"/brows"}>Browse Cars</MyLink>
-              </li>
-              <li>
-                <MyLink to={"/booking"}>My Bookings</MyLink>
-              </li>
+              <MyLink to={"/contact"}>Contact</MyLink>
             </ul>
           </div>
+
+          {/* RIGHT */}
           <div className="navbar-end flex items-center gap-5">
             {loading ? (
-              <ClockLoader color="#fff" />
+              <ClockLoader size={20} color={scrolled ? "#fff" : "#000"} />
             ) : user ? (
-              <div className="dropdown">
-                <div tabIndex={0} role="button" className=" m-1">
-                  <img
-                    src={user?.photoURL || "https://via.placeholder.com"}
-                    className="h-15 w-15 rounded-full mx-auto cursor-pointer"
-                    alt=""
-                  />
-                </div>
+              <div className="dropdown dropdown-end">
+                <img
+                  tabIndex={0}
+                  src={user?.photoURL || "https://via.placeholder.com"}
+                  className="h-10 w-10 rounded-full cursor-pointer"
+                  alt="user"
+                />
+
                 <div
-                  tabIndex="-1"
-                  className="dropdown-content menu bg-base-100 rounded-box z-[100] w-56 max-h-60 p-3 shadow-lg border border-gray-300 overflow-y-auto"
+                  tabIndex={0}
+                  className="dropdown-content right-0 mt-3 menu bg-base-100 rounded-box w-56 p-3 shadow z-[999]"
                 >
-                  <h2>{user?.displayName}</h2>
-                  <p className="my-3">{user?.email}</p>
-                  <button
+                  <h2 className="font-semibold">{user?.displayName}</h2>
+                  <p className="my-2 text-sm">{user?.email}</p>
+
+                  <Link
+                    to="/dashboard"
+                    className="px-4 py-3 hover:bg-neutral-100 transition font-semibold"
+                  >
+                    Dashboard
+                  </Link>
+                  <motion.button
                     onClick={handleSignout}
-                    className="outline px-3 py-2 text-[#2563EB] cursor-pointer"
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    whileHover={{ scale: 1.08 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    viewport={{ once: true }}
+                    className="px-8 py-3 bg-[#003366] rounded-md cursor-pointer text-white"
                   >
                     Sign Out
-                  </button>
+                  </motion.button>
+                  {/* <button
+                    onClick={handleSignout}
+                    className="mt-2 px-3 py-2 rounded bg-red-500 text-white hover:bg-red-600"
+                  >
+                    Sign Out
+                  </button> */}
                 </div>
               </div>
             ) : (
-              <button className="outline px-12 py-4 text-[#2563EB]">
-                <MyLink to={"/login"} className="text-[#F9FAFB] ">
-                  Login
-                </MyLink>
-              </button>
-
-              // <MyLink to={"/login"}>Login</MyLink>
+              <MyLink
+                to="/login"
+                className={`${scrolled ? "text-white" : "text-black"}`}
+              >
+                Login
+              </MyLink>
             )}
           </div>
         </div>
@@ -153,149 +249,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-
-// import React, { useContext } from "react";
-// import MyContainer from "./MyContainer";
-// import MyLink from "./MyLink";
-// import { AuthContext } from "../context/AuthContext";
-// import { MdCarRental } from "react-icons/md";
-// import { toast } from "react-toastify";
-// import { ClockLoader } from "react-spinners";
-
-// const NavBar = () => {
-//   const { user, setUser, handleSignoutFun, loading, setLoading } =
-//     useContext(AuthContext);
-
-//   const handleSignout = () => {
-//     handleSignoutFun();
-//     setLoading(false)
-//       .then(() => {
-//         toast.success("Signout successful");
-//         setUser(null);
-//       })
-//       .catch((e) => {
-//         toast.error(e.message);
-//       });
-//   };
-
-//   return (
-//     <nav className="fixed top-0 left-0 w-full z-50 bg-transparent">
-//       {/* Transparent Navbar */}
-//       <div className="bg-transparent">
-//         <MyContainer>
-//           <div className="navbar">
-//             {/* Navbar Start */}
-//             <div className="navbar-start">
-//               <div className="dropdown">
-//                 <div tabIndex={0} className="btn btn-ghost lg:hidden">
-//                   <svg
-//                     xmlns="http://www.w3.org/2000/svg"
-//                     className="h-5 w-5 text-white"
-//                     fill="none"
-//                     viewBox="0 0 24 24"
-//                     stroke="currentColor"
-//                   >
-//                     <path
-//                       strokeLinecap="round"
-//                       strokeLinejoin="round"
-//                       strokeWidth="2"
-//                       d="M4 6h16M4 12h8m-8 6h16"
-//                     />
-//                   </svg>
-//                 </div>
-//                 <ul
-//                   tabIndex="-1"
-//                   className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
-//                 >
-//                   <li>
-//                     <a>Item 1</a>
-//                   </li>
-//                   <li>
-//                     <a>Parent</a>
-//                     <ul className="p-2">
-//                       <li>
-//                         <a>Submenu 1</a>
-//                       </li>
-//                       <li>
-//                         <a>Submenu 2</a>
-//                       </li>
-//                     </ul>
-//                   </li>
-//                   <li>
-//                     <a>Item 3</a>
-//                   </li>
-//                 </ul>
-//               </div>
-//               <div className="flex items-center gap-2">
-//                 <MdCarRental className="text-white text-3xl" />
-//                 <h1 className="text-white text-2xl font-semibold">
-//                   Car Rental
-//                 </h1>
-//               </div>
-//             </div>
-
-//             {/* Navbar Center */}
-//             <div className="navbar-center hidden lg:flex">
-//               <ul className="menu menu-horizontal px-1">
-//                 <li>
-//                   <MyLink to={"/"}>Home</MyLink>
-//                 </li>
-//                 <li>
-//                   <MyLink to={"/addCar"}>Add Car</MyLink>
-//                 </li>
-//                 <li>
-//                   <MyLink to={"/listings"}>My Listings</MyLink>
-//                 </li>
-//                 <li>
-//                   <MyLink to={"/brows"}>Browse Cars</MyLink>
-//                 </li>
-//                 <li>
-//                   <MyLink to={"/booking"}>My Bookings</MyLink>
-//                 </li>
-//               </ul>
-//             </div>
-
-//             {/* Navbar End */}
-//             <div className="navbar-end flex items-center gap-5">
-//               {loading ? (
-//                 <ClockLoader color="#fff" />
-//               ) : user ? (
-//                 <div className="dropdown">
-//                   <div tabIndex={0} className="m-1">
-//                     <img
-//                       src={user?.photoURL || "https://via.placeholder.com"}
-//                       className="h-12 w-12 rounded-full cursor-pointer"
-//                       alt="User"
-//                     />
-//                   </div>
-//                   <div
-//                     tabIndex="-1"
-//                     className="dropdown-content menu bg-base-100 rounded-box z-50 w-56 p-4 shadow"
-//                   >
-//                     <h2 className="font-semibold">{user?.displayName}</h2>
-//                     <p className="text-sm mb-2">{user?.email}</p>
-//                     <button
-//                       onClick={handleSignout}
-//                       className="btn btn-sm btn-error w-full"
-//                     >
-//                       Sign Out
-//                     </button>
-//                   </div>
-//                 </div>
-//               ) : (
-//                 <MyLink
-//                   to={"/login"}
-//                   className="text-white btn btn-outline btn-sm"
-//                 >
-//                   Login
-//                 </MyLink>
-//               )}
-//             </div>
-//           </div>
-//         </MyContainer>
-//       </div>
-//     </nav>
-//   );
-// };
-
-// export default NavBar;
